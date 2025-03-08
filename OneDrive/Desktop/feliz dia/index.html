@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia das Mulheres, Emy!</title>
+    <!-- Alterei para o link correto do Toastify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 2s ease-in-out;
+            overflow: hidden;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        img {
+            width: 350px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s;
+            animation: floating 3s infinite ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+        h1 {
+            font-size: 3.5em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.5em;
+            margin: 15px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: floating 4s infinite ease-in-out;
+        }
+        button:hover {
+            background: #e60073;
+            transform: scale(1.1);
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            opacity: 0.7;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Feliz Dia das Mulheres, Emy! 💖</h1>
+    <img src="/assets/emy.jpeg" alt="Foto de Emy">
+    <p>Hoje é um dia especial para celebrar você, Emy! Sua força, beleza e luz inspiram todos ao seu redor. 🌸</p>
+    <button onclick="showToast()">Clique para uma mensagem especial</button>
+    <div class="hearts"></div>
+    <script>
+        function showToast() {
+            Toastify({
+                text: "Você é incrível, Emy! Nunca se esqueça disso! 💕",
+                duration: 4000,
+                close: true,
+                gravity: "top", // top or bottom
+                position: "center", // left, center, right
+                backgroundColor: "#ff4081",
+                stopOnFocus: true,
+                onClick: function(){} // pode definir um callback se necessário
+            }).showToast();
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.querySelector('.hearts').appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
